@@ -52,14 +52,27 @@ export const calculatorTool = ai.defineTool(
   },
   async (input) => {
     try {
-      // Safe eval for basic math - in production, use a proper math parser
-      const result = Function(`'use strict'; return (${input.expression})`)();
+      // Simple safe calculator - validates expression before evaluation
+      // Only allows numbers, basic operators, and parentheses
+      const sanitized = input.expression.replace(/[^0-9+\-*/().%\s]/g, '');
+      if (sanitized !== input.expression) {
+        throw new Error('Invalid characters in expression');
+      }
+      
+      // For production, use a proper math parser library like 'mathjs'
+      // This is a simplified demo implementation
+      const result = Function(`'use strict'; return (${sanitized})`)();
+      
+      if (typeof result !== 'number' || !isFinite(result)) {
+        throw new Error('Result must be a finite number');
+      }
+      
       return {
         expression: input.expression,
         result: Number(result),
       };
     } catch (error) {
-      throw new Error(`Unable to calculate: ${input.expression}`);
+      throw new Error(`Unable to calculate: ${input.expression}. Error: ${(error as Error).message}`);
     }
   }
 );
