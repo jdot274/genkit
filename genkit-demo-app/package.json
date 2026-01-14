@@ -1,0 +1,47 @@
+{
+  "name": "genkit-demo-app",
+  "version": "1.0.0",
+  "description": "Comprehensive Firebase Genkit feature showcase with Next.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "genkit:dev": "genkit start -- npm run dev",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@genkit-ai/ai": "^0.9.0",
+    "@genkit-ai/core": "^0.9.0",
+    "@genkit-ai/dotprompt": "^0.9.0",
+    "@genkit-ai/flow": "^0.9.0",
+    "@genkit-ai/google-genai": "^0.9.0",
+    "genkit": "^0.9.0",
+    "next": "^15.1.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.12",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "genkit-cli": "^0.9.0",
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [
+    "genkit",
+    "firebase",
+    "ai",
+    "llm",
+    "gemini",
+    "nextjs",
+    "demo",
+    "playground"
+  ],
+  "author": "Firebase Genkit Team",
+  "license": "Apache-2.0"
+}
