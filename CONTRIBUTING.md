@@ -51,6 +51,97 @@ Genkit supports JavaScript, Go, and Python. Before contributing in any of these 
 
 After completing these prerequisites, follow the language-specific setup instructions below.
 
+## Working with a Fork
+
+If you're working with a fork of this repository and want to add branches from the original repository (firebase/genkit), follow these steps:
+
+### Add the upstream remote
+
+First, add the original repository as an upstream remote:
+
+```bash
+git remote add upstream https://github.com/firebase/genkit.git
+```
+
+Verify the new upstream remote has been added:
+
+```bash
+git remote -v
+```
+
+You should see both `origin` (your fork) and `upstream` (firebase/genkit) in the output.
+
+### Fetch branches from upstream
+
+To fetch all branches from the upstream repository:
+
+```bash
+git fetch upstream
+```
+
+This will download all branches and their commits from the upstream repository.
+
+### List available upstream branches
+
+To see all available branches from upstream:
+
+```bash
+git branch -r | grep upstream
+```
+
+### Create a local branch from an upstream branch
+
+To create a local branch that tracks an upstream branch:
+
+```bash
+# Create and checkout a new local branch from upstream
+git checkout -b <local-branch-name> upstream/<upstream-branch-name>
+
+# For example, to work with the upstream main branch:
+git checkout -b upstream-main upstream/main
+```
+
+Alternatively, if you just want to checkout an existing upstream branch:
+
+```bash
+git checkout -t upstream/<branch-name>
+```
+
+### Keep your fork synchronized
+
+To keep your fork's main branch up to date with the upstream repository:
+
+```bash
+# Switch to your main branch
+git checkout main
+
+# Fetch the latest changes from upstream
+git fetch upstream
+
+# Merge upstream changes into your main branch
+git merge upstream/main
+
+# Push the updates to your fork
+git push origin main
+```
+
+### Update an existing local branch with upstream changes
+
+If you have a local branch and want to incorporate changes from upstream:
+
+```bash
+# Switch to your branch
+git checkout <your-branch-name>
+
+# Fetch the latest changes from upstream
+git fetch upstream
+
+# Merge or rebase with the upstream branch
+git merge upstream/main
+# or
+git rebase upstream/main
+```
+
 ## Go Guide
 
 1. Install Go 1.24 or later
